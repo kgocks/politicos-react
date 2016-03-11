@@ -33,55 +33,55 @@ class Filters extends Component {
       const options = json.objects.map(func);
       return {options};
     });
-  }
+  };
 
   getOptionsCallback(input, callback, opts) {
     setTimeout(() => {callback(null, {options: opts, complete: true});}, 500);
-  }
+  };
 
   // Political Parties
   getPoliticalParties() {
     const func = (item) => {return {"label": item.siglum + " (" + item.name + ")", "value": item.siglum};};
     return this.getOptions("/political-parties/", func);
-  }
+  };
 
   // Political Offices
   getPoliticalOffices() {
     const func = (item) => {return {"label": item.name, "value": item.slug};};
     return this.getOptions("/political-offices/", func);
-  }
+  };
 
   // Educations
   getEducations() {
     const func = (item) => {return {"label": item.name, "value": item.name};};
     return this.getOptions("/educations/", func);
-  }
+  };
 
   // Elections
   getElections() {
     const func = (item) => {return {"label": item.year, "value": item.year};};
     return this.getOptions("/elections/", func);
-  }
+  };
 
   // Politicians
   getPoliticians(term) {
     const func = (item) => {return {"label": item.name, "value": item.name};};
     const filter = (term != "") ? "?q=" + term : "";
     return this.getOptions("/politicians/search/" + filter, func);
-  }
+  };
 
   // Cities
   getCities(term) {
     const func = (item) => {return {"label": item.name, "value": item.name};};
     const filter = (term != "") ? "?q=" + term : "";
     return this.getOptions("/cities/search/" + filter, func);
-  }
+  };
 
   // States
   getStates() {
     const func = (item) => {return {"label": item.name, "value": item.slug};};
     return this.getOptions("/states/", func);
-  }
+  };
 
   // Elected
   getElected(input, callback) {
@@ -90,7 +90,7 @@ class Filters extends Component {
       {"label": "Não Eleito", "value": 0}
     ];
     return this.getOptionsCallback(input, callback, options);
-  }
+  };
 
   // Gender
   getGender(input, callback) {
@@ -100,7 +100,7 @@ class Filters extends Component {
       {"label": "Não informado", "value": "N"}
     ];
     return this.getOptionsCallback(input, callback, options);
-  }
+  };
 
   // Occupations
   getOccupations(term) {
@@ -113,7 +113,7 @@ class Filters extends Component {
   getMaritalStatus() {
     const func = (item) => {return {"label": item.name, "value": item.slug};};
     return this.getOptions("/marital-status/", func);
-  }
+  };
 
   render() {
     return (
